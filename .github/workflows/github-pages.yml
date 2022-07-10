@@ -6,7 +6,7 @@ on:
 jobs:
   deployment:
     runs-on: ubuntu-latest
-    environment: production
+    environment: development
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -20,7 +20,7 @@ jobs:
       run: npm ci
     - name: Build and Deploy
       env:
-        NODE_ENV: production
+        NODE_ENV: development
         # Remove this line if you would like to skip using google analytics
         REACT_APP_GA_TRACKING_ID: UA-68649021-1
         # This is set automatically by github
@@ -28,5 +28,5 @@ jobs:
       run: |
           git config user.name "Automated"
           git config user.email "actions@users.noreply.github.com"
-          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/mldangelo/personal-site.git
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/ericadipp/site.git
           npm run deploy
